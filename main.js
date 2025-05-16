@@ -62,35 +62,7 @@ register_geocoder = function (mapInstance) {
 
 register_geocoder(map)
 
-function registerGeoLocate(mapInstance) {
-  mapInstance.locate({ setView: true, maxZoom: 16 });
-
-  function onLocationFound(e) {
-    var radius = e.accuracy;
-
-    let m = L.marker(e.latlng).addTo(map)
-      .bindPopup("You are within " + radius.toFixed(1) + " meters from this point").openPopup();
-
-    let c = L.circle(e.latlng, radius).addTo(map);
-
-    setTimeout(function () {
-      mapInstance.removeLayer(m);
-      mapInstance.removeLayer(c);
-    },
-      25000);
-  }
-
-  mapInstance.on('locationfound', onLocationFound);
-
-  function onLocationError(e) {
-    alert(e.message);
-  }
-
-  mapInstance.on('locationerror', onLocationError);
-}
-registerGeoLocate(map)
-
- function registerWFSReadAndWriteLayer(mapInstance, toc) {
+function registerWFSReadAndWriteLayer(mapInstance, toc) {
      // Settings - These need to agree with the definition of the WFS layer in Geoserver
      var namespace_prefix = "geo1007";
      var namespace_uri = "http://all.kinds.of.data";
@@ -114,7 +86,7 @@ registerGeoLocate(map)
      var styleParams = {
          color: 'black',
          fillColor: 'green',
-         weight: 10.0,
+         weight: 1.0,
          opacity: 0.6,
          fillOpacity: 0.4
      };
