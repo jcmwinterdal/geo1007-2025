@@ -114,7 +114,7 @@ registerGeoLocate(map)
      var styleParams = {
          color: 'black',
          fillColor: 'green',
-         weight: 1.0,
+         weight: 10.0,
          opacity: 0.6,
          fillOpacity: 0.4
      };
